@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html >
+<head>
+	<title>Задание №1</title>
+	<meta charset="utf-8">
+	<style>
+		body {
+			background: rgb(168,219,254);
+		}
+	</style>
+</head>
+<body>
+	<script>
+		let tek = 5;
+		function newnews(str) {
+			if (str.length==0) {
+				document.getElementById("news").innerHTML="";
+				return;
+				  }
+			  if (window.XMLHttpRequest) {
+				xmlhttp=new XMLHttpRequest();
+				 } else { 
+					xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+						  }
+				  xmlhttp.onreadystatechange=function() {
+			if (this.readyState==4 && this.status==200) {
+				  document.getElementById("news").innerHTML=this.responseText;
+				}
+			  }
+			xmlhttp.open("GET","lab_3-1.php?tek="+tek,true);
+			   xmlhttp.send();
+			   tek+=5;
+			}
+	 </script>
+	<h1> <font color="#0060a2">Лабораторная работа №3</font></h1>
+	<h3><font color="#9c088b">Выполнила студентка гр.ПИ-320 Ярулина А.И.</font></h3>
+	<h2><font color="#9c088b">Самые свежие новости:</font></h2>
+	<div style="width: 400px; background-color: #fee2ee;">
+			<h3>Черепаха из Германии весом 100 кг каждый день катается на скейтборде</h3>
+			<p>Таким необычным способом она восстанавливает, с подачи человека, больные суставы.</p>
+			<img src="1.webp" alt="черепашка" style="width: 300px;">
+	</div><br>
+	<div style="width: 400px; background-color: #fee2ee;">
+		<h3>Италия, возможно, очень скоро откроет границы для россиян</h3>
+		<p>Граждане России предстоящим летом, возможно, смогут снова отправиться на отдых или по делам в Италию. Такую надежду в разговоре с журналистами высказал посол Италии в России П. Террачано.</p>
+		<img src="2.webp" alt="италия" style="width: 300px;">
+</div><br>
+<div style="width: 400px; background-color: #fee2ee;">
+	<h3>Выплаты на детей от 3 до 7 лет стали дифференцированные</h3>
+	<p>Согласно подписанному В. Путиным 10 марта указу, размер назначаемых выплат на детей от 3 до 7 лет будет составлять от 50% до 100% величины прожиточного минимума для детей.	</p>
+	<img src="3.webp" alt="выплаты" style="width: 300px;">
+</div><br>
+<div style="width: 400px; background-color: #fee2ee;">
+	<h3>Пенсионеры смогут получить льготы на поезда дальнего следования</h3>
+	<p>Депутат Госдумы И. Сухарев предложил включить пенсионеров в число льготников на проезд в поездах дальнего следования.	</p>
+	<img src="4.webp" alt="льготы" style="width: 300px;">
+</div><br>
+<div style="width: 400px; background-color: #fee2ee;">
+	<h3>Самые ожидаемые сериальные премьеры 2021 года</h3>
+	<p>Несмотря на сложный Год Крысы, кинорежиссеры не сидели без дела и готовы порадовать зрителей шедеврами.	</p>
+	<img src="5.webp" alt="сериалы" style="width: 300px;">
+</div><br>
+	<span id="news"></span>
+	<form>
+		<input onclick="newnews(this.value)" type="button" value="Загрузить новости">
+	</form>
+<a href="lab_3-2.html"><button>Задание №2</button></a>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Задание №2</title>
+	<meta charset="utf-8">
+	<style>
+body {
+    background: -webkit-linear-gradient(left, #FFF0F5, #F0FFFF); 
+    background: -o-linear-gradient(right, #FFF0F5, #F0FFFF);
+    background: -moz-linear-gradient(right, #FFF0F5, #F0FFFF); 
+    background: linear-gradient(to right, #FFF0F5, #F0FFFF); 
+    background-color: F0FFFF; 
+}
+</style>
+<script>
+	window.addEventListener("load",function() {
+	  var request = new XMLHttpRequest();
+	  request.open('GET','lab_3-2.php',true);
+	  request.addEventListener('readystatechange', function() {
+	   if ((request.readyState==4) && (request.status==200)) {
+		  var welcome = document.getElementById('show');
+		  welcome.innerHTML = request.responseText;
+		}
+	  });
+	request.send();
+	});
+	function showRes(str) {
+		  alert("Cпасибо за отзыв!");
+		if (str.length==0) {
+			document.getElementById("show").innerHTML="";
+			return;
+		  }
+		  if (window.XMLHttpRequest) {
+			xmlhttp=new XMLHttpRequest();
+			  } else {  
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			  }
+		 xmlhttp.onreadystatechange=function() {
+		if (this.readyState==4 && this.status==200) {
+			 document.getElementById("show").innerHTML=this.responseText;
+		}
+		  }
+		  var nam = document.getElementById("name").value, email = document.getElementById("email").value, text=document.getElementById("text").value;
+		   xmlhttp.open("GET","lab_3-2new.php?name="+nam+"&email="+email+"&text="+text,true);
+		   xmlhttp.send();
+		}
+	</script>
+</head>
+<body>
+<h1> 
+	  <font color="660066">Лабораторная работа №3</font></h1>
+	<h3><font color="666699">Выполнила студентка гр.ПИ-320 Ярулина А.И.</font></h3>
+		<h1>Задание 2</h1>
+		<h3>А.С. Пушкин</h3>
+		<h2>Постановка "Барышня-крестьянка"</h2>
+		<h4>в одном действии</h4>
+		<img src="t1.jpg" alt="1" width="300px">
+		<img src="t2.jpg" alt="2" width="300px">
+		<br>
+		<img src="t3.jpg" alt="3" width="300px">
+		<img src="t4.jpg" alt="4" width="300px">
+		<h3>Сюжет последней из «Повестей Белкина» – «Барышни-крестьянки» – по-водевильному изящен и, кажется, вовсе не претендует на неправдоподобность.<br> Впрочем, судить вам, дорогие зрители!..</h3>
+		<br>
+		<h2>Нам будет приятно увидеть Ваш отзыв на спектакль!</h2>
+		<form method="get">
+			<p class="text">Ваше имя: <input type="text" name="name" id="name"/></p>
+			<p class="text">Почта: <input type="text" name="email" id="email"/></p>
+			<p class="text">Отзыв: <input type="text" name="text" id="text"/></p>
+			<input onclick = "showRes(this.value)" type="button" id="btn" value="Отправить" />
+		</form>
+		<h3>Отзывы:</h3>
+		<span id="show"></span> 
+</div>
+</body>
+</html>
